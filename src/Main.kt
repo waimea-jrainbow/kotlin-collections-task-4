@@ -1,5 +1,7 @@
+
 /**
  * Kotlin Collections Task 4- Automation
+ * Kotlin Collections Task 5- colour
  *
  *              OOOOO  OOO   OOO
  *                 O  O   O O   O
@@ -291,17 +293,24 @@ fun placeMonkeyInCage(cageList: MutableList<String>, cageNum: Int, name: String)
  * +--------+--------+--------+--------+----
  */
 fun showMonkeyCages(cageList: List<String>) {
-    val divider = "+--------".repeat(cageList.size) + "+"
+    val divider = ("+--------".repeat(cageList.size) + "+").cyan()
+    val cageEnd = "|".cyan()
+    println(divider)
+    for (i in 0..<cageList.size) print("$cageEnd Cage ${i + 1} ".magenta())
+    println(cageEnd)
 
     println(divider)
-    for (i in 0..<cageList.size) print("| Cage ${i + 1} ")
-    println("|")
+    for ((i, name) in cageList.withIndex())
+        if (name.startsWith('!')) {
+            print("$cageEnd ${name.padEnd(6).red()} ")
+        }
+        else if (name == EMPTY){
+            print("$cageEnd ${name.padEnd(6).green()} ")
+        }
+        else print("$cageEnd ${name.padEnd(6).blue()} ")
 
-    println(divider)
-    for ((i, name) in cageList.withIndex()) print("| ${name.padEnd(6)} ")
-    println("|")
-
-    println(divider)
+        println(cageEnd)
+        println(divider)
 }
 
 
