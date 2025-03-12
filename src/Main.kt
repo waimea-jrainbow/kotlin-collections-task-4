@@ -296,8 +296,10 @@ fun showMonkeyCages(cageList: List<String>) {
     val divider = ("+--------".repeat(cageList.size) + "+").cyan()
     val cageEnd = "|".cyan()
     println(divider)
-    for (i in 0..<cageList.size) print("$cageEnd Cage ${i + 1} ".magenta())
-    println(cageEnd)
+
+    for (i in 0..<cageList.size)
+        print(cageEnd + " Cage ${i + 1} ".magenta())
+        println(cageEnd)
 
     println(divider)
     for ((i, name) in cageList.withIndex())
